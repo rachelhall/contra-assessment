@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useKeyPress } from '@/utils';
 
 import './Modal.scss';
 
-export const Modal: React.FC = () => {
-  const closeModal = () => {};
+type IProps = {
+  toggleModal: () => void;
+};
+
+export const Modal: React.FC<IProps> = ({ toggleModal }) => {
+  const escPressed = useKeyPress('ESC');
+
+  const handleOverlayKeyEvent = (e) => {
+    if (escPressed) {
+      toggleModal();
+    }
+  };
 
   return (
     <div className="Modal">
@@ -12,7 +23,13 @@ export const Modal: React.FC = () => {
         closeModal={closeModal}
         component={component}
       /> */}
-      <div className="Modal-overlay" onClick={() => closeModal()} />
+      <div
+        onKeyDown={handleOverlayKeyEvent}
+        tabIndex={0}
+        role={}
+        className="Modal-overlay"
+        onClick={() => closeModal()}
+      />
     </div>
   );
 };
