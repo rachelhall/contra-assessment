@@ -1,33 +1,36 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useKeyPress } from '@/utils';
 
 import './Modal.scss';
+import ModalContent from '../ModalContent';
 
-type IProps = {
-  toggleModal: () => void;
+interface IProps  {
+  closeModal: () => void;
 };
 
-export const Modal: React.FC<IProps> = ({ toggleModal }) => {
+export const Modal: React.FC<IProps> = ({ closeModal }) => {
   const escPressed = useKeyPress('ESC');
 
-  const handleOverlayKeyEvent = (e) => {
+  const handleOverlayKeyEvent = () => {
     if (escPressed) {
-      toggleModal();
+      closeModal();
     }
   };
 
+  useEffect(()=> handleOverlayKeyEvent(), [escPressed])
+
   return (
     <div className="Modal">
-      {/* <ModalContent
-        modal={modal}
+      <ModalContent
+      
         closeModal={closeModal}
-        component={component}
-      /> */}
+        
+      />
       <div
+        className="Modal-overlay"
         onKeyDown={handleOverlayKeyEvent}
         tabIndex={0}
-        role={}
-        className="Modal-overlay"
+        role='dialog'
         onClick={() => closeModal()}
       />
     </div>
