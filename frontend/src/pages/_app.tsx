@@ -1,8 +1,13 @@
 /* eslint-disable canonical/filename-match-exported */
 import { type AppProps } from 'next/app';
+import { ModalProvider } from '@/providers/ModalProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <ModalProvider>
+      <Component {...pageProps} />
+    </ModalProvider>
+  );
 };
 
 export default App;
