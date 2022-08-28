@@ -43,7 +43,7 @@ const ModalProvider: React.FC<IProps> = (props) => {
         [handleModal, isOpen, modalContent]
       )}
     >
-      <Modal />
+      {/* <Modal /> */}
       {children}
     </ModalContext.Provider>
   );

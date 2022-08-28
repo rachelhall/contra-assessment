@@ -7,6 +7,7 @@ const Index: NextPage = () => {
   return (
     <div>
       <h1>Welcome to Contra!</h1>
+      <InceptionModal />
       <Paragraph>
         I'm baby master cleanse ennui deep v banjo normcore, polaroid humblebrag
         vegan glossier umami viral snackwave sriracha. Taxidermy scenester
@@ -166,7 +167,6 @@ const Index: NextPage = () => {
       </Paragraph>
 
       <Paragraph>Dummy text? More like dummy thicc text, amirite?</Paragraph>
-      <InceptionModal />
     </div>
   );
 };
