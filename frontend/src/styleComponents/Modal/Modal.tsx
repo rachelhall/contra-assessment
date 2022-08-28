@@ -1,14 +1,17 @@
 import cx from 'classnames';
-import React, { useContext, useEffect } from 'react';
-import { ModalContext } from '@/providers/ModalProvider';
+import React, {  useEffect } from 'react';
 import { useKeyPress } from '@/utils';
 import ModalContent from '../ModalContent';
 import styles from './Modal.module.css';
 
-type IProps = {};
+type IProps = {
+  handleModal: (content?: JSX.Element) => void;
+  isOpen: boolean;
+  modalContent?: JSX.Element
+};
 
-export const Modal: React.FC<IProps> = () => {
-  const { handleModal, isOpen } = useContext(ModalContext);
+export const Modal: React.FC<IProps> = ({handleModal, isOpen, modalContent }) => {
+
   const escapePressed = useKeyPress('Escape');
 
   useEffect(() => {
@@ -20,7 +23,7 @@ export const Modal: React.FC<IProps> = () => {
   const modalClass = cx(styles['modal'], !isOpen && styles['modal-closed']);
   return (
     <div className={modalClass}>
-      <ModalContent />
+      <ModalContent  handleModal={handleModal} modalContent={modalContent} />
       <div
         className={styles['modal-overlay']}
         onClick={() => handleModal()}

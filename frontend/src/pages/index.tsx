@@ -1,12 +1,14 @@
 /* eslint-disable canonical/filename-match-exported */
 import { type NextPage } from 'next';
 import { InceptionModal } from '@/components/InceptionModal';
+import { Heading } from '@/styleComponents/Heading';
 import { Paragraph } from '@/styleComponents/Paragraph';
 
 const Index: NextPage = () => {
   return (
     <div>
-      <h1>Welcome to Contra!</h1>
+      <Heading>Welcome to Contra!</Heading>
+      <InceptionModal />
       <Paragraph>
         I'm baby master cleanse ennui deep v banjo normcore, polaroid humblebrag
         vegan glossier umami viral snackwave sriracha. Taxidermy scenester
@@ -166,7 +168,7 @@ const Index: NextPage = () => {
       </Paragraph>
 
       <Paragraph>Dummy text? More like dummy thicc text, amirite?</Paragraph>
-      <InceptionModal />
+      
     </div>
   );
 };

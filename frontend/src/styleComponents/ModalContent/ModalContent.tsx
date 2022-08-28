@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
-import { ModalContext } from '@/providers/ModalProvider';
+import React from 'react';
 import CloseButton from '../CloseModalButton';
 import styles from './ModalContent.module.css';
 
-type IProps = {};
+type IProps = {
+  handleModal: (content?: JSX.Element) => void;
+  modalContent: JSX.Element;
+};
 
-export const ModalContent: React.FC<IProps> = () => {
-  const { handleModal, modalContent } = useContext(ModalContext);
+export const ModalContent: React.FC<IProps> = ({ handleModal, modalContent } ) => {
+
   return (
     <div className={styles['ModalContent']}>
       <CloseButton handleClose={handleModal} />
