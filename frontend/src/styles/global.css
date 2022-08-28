@@ -1,15 +1,13 @@
 :root {
---green: #5CDB95;
---blue: #05386B;
---white: #EDF5E1;
-
-
+  --green: #5cdb95;
+  --blue: #05386b;
+  --white: #edf5e1;
 }
-    body {
-    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-      'Arial', sans-serif;
-    padding: 20px 20px 60px;
-    color: var(--white);
-    background-color: var(--green);
-    margin: 0 auto;
-  }
+body {
+  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
+  padding: 20px 20px 60px;
+  color: var(--white);
+  background-color: var(--green);
+  margin: 0 auto;
+}
