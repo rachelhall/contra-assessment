@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
-import { Modal } from '@/styleComponents/Modal';
-import { Portal } from '../HOC/Portal';
+import { useCallback, useState } from 'react';
+import Modal from '../styleComponents/Modal';
 
-export const useModal = () => {
-  const handleModal = (content?: JSX.Element) => {
+export const useModal = ({
+  content,
+  heading,
+}: {
+  content?: JSX.Element;
+  heading?: string;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<JSX.Element>();
+
+  const handleModal = useCallback(() => {
+    setIsOpen(!isOpen);
     document.body.style.overflow = 'unset';
+    if (content && isOpen === false) {
+      if (typeof window !== 'undefined') {
+        document.body.style.overflow = 'hidden';
+      }
 
-    if (content && typeof window !== 'undefined') {
-      document.body.style.overflow = 'hidden';
-
-      return (
-        <Portal>
-          <Modal content={content} />
-        </Portal>
-      );
+      setModalContent(content);
     }
+  }, [content, isOpen]);
+
+  const renderModal = () => {
+    return (
+      <Modal
+        ariaLabelID="dialog1_label"
+        handleModal={handleModal}
+        heading={heading}
+        isOpen={isOpen}
+        modalContent={modalContent}
+      />
+    );
   };
 
-  return {
-    handleModal,
-  };
+  return { handleModal, isOpen, modal: renderModal(), modalContent };
 };

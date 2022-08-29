@@ -1,23 +1,24 @@
 // eslint-disable-next-line canonical/filename-match-exported
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
+import { Html, Head, Main, NextScript } from 'next/document';
 
-type Props = {};
-
-class Document extends NextDocument<Props> {
-  // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-  render() {
-    return (
-      <Html>
-        <Head />
-        <body>
-          <Main />
-          <div id="myportal" />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
+const Document = () => {
+  return (
+    <Html>
+      <Head>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Notable&family=Roboto:wght@400;900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body>
+        <Main />
+        <div id="modal-root" />
+        <NextScript />
+      </body>
+    </Html>
+  );
+};
 
 export default Document;
