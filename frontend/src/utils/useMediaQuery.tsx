@@ -6,20 +6,36 @@ export enum EMediaBreakPoint {
   tablet = '(min-width: 768px) ',
 }
 
-export const useMediaQuery = (query: EMediaBreakPoint) => {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
+export const useMediaQuery = (query: EMediaBreakPoint): boolean => {
+  const getMatches = (): boolean => {
+    // Prevents SSR issues
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(query).matches;
     }
 
-    const listener = () => setMatches(media.matches);
+    return false;
+  };
 
-    window.addEventListener('resize', listener);
-    return () => window.removeEventListener('resize', listener);
-  }, [matches, query]);
+  const [matches, setMatches] = useState<boolean>(getMatches());
+
+  const handleChange = () => {
+    setMatches(getMatches());
+  };
+
+  useEffect(() => {
+    const matchMedia = window.matchMedia(query);
+
+    handleChange();
+
+    matchMedia.addEventListener('change', handleChange);
+
+    return () => {
+      matchMedia.removeEventListener('change', handleChange);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return matches;
 };
+
+export default useMediaQuery;

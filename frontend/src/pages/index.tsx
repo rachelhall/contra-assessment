@@ -7,7 +7,7 @@ import { Paragraph } from '@/styleComponents/Paragraph';
 const Index: NextPage = () => {
   return (
     <div>
-      <Heading>Welcome to Contra!</Heading>
+      <Heading size="large">Welcome to Contra!</Heading>
       <InceptionModal />
       <Paragraph>
         I'm baby master cleanse ennui deep v banjo normcore, polaroid humblebrag
@@ -168,7 +168,6 @@ const Index: NextPage = () => {
       </Paragraph>
 
       <Paragraph>Dummy text? More like dummy thicc text, amirite?</Paragraph>
-      
     </div>
   );
 };

@@ -6,12 +6,12 @@ Modals are a common UI pattern in web applications, but implementing them in a c
 
 You'll be evaluated on how well your implementation accounts for this (nonexhaustive) list of considerations:
 
-- Focus Management
-- Background scroll-locking
-- Tab navigation
+- ✅ Focus Management
+- ✅ Background scroll-locking
+- ✅ Tab navigation
 - React portals
-- Multi-modal environment (i.e. stacking)
-- Accessibility
+- ✅ Multi-modal environment (i.e. stacking)
+- ✅ Accessibility
 - Mobile
 
 ## Repository Setup Instructions
