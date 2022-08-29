@@ -1,5 +1,5 @@
+import { EMediaBreakPoint, useMediaQuery } from '@/utils/useMediaQuery';
 import { ESystemColor } from '../../styles/ESystemColor';
-import { EMediaBreakPoint, useMediaQuery } from '../../utils';
 import styles from './Heading.module.css';
 
 type TProps = {

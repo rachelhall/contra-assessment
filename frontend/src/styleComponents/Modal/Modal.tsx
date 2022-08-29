@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { useEffect } from 'react';
-import { ClientOnlyPortal } from '../../components/ClientOnlyPortal';
-import { useKeyPress } from '../../utils';
+import { ClientOnlyPortal } from '@/utils/ClientOnlyPortal';
+import { useKeyPress } from '@/utils/useKeyPress';
 import ModalContent from '../ModalContent';
 import styles from './Modal.module.css';
 

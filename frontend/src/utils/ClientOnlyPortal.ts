@@ -1,25 +1,14 @@
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-export const ClientOnlyPortal = ({
-  children,
-  selector,
-}: {
-  children: JSX.Element;
-  selector: string;
-}) => {
+export const ClientOnlyPortal = ({ children, selector = '#modal-root' }) => {
   const ref = useRef();
   const [mounted, setMounted] = useState(false);
 
-  const domNode = document.querySelector(selector);
-
   useEffect(() => {
-    if (domNode) {
-      ref.current = domNode;
-    }
-
+    ref.current = document.querySelector(selector);
     setMounted(true);
-  }, [domNode, selector]);
+  }, [selector]);
 
   return mounted ? createPortal(children, ref.current) : null;
 };
